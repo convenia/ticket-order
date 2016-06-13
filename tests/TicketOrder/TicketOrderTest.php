@@ -19,6 +19,6 @@ class TicketOrderTest extends BaseTest
         );
 
         $ticketOrder->typeAlimentacao();
-        print_r($ticketOrder->header->getField('requesterUser')->getValue());exit;
+//        print_r($ticketOrder->header->getField('requesterUser')->getValue());exit;
     }
 }

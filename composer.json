@@ -1,0 +1,44 @@
+{
+    "name": "convenia/ticket-order",
+    "type": "library",
+    "description": ".",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "ticket",
+        "ticket vr",
+        "ticket va",
+        "refeição",
+        "alimentação"
+    ],
+    "authors": [
+        {
+            "name": "Eduardo Bizarro",
+            "email": "edbizarro@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Convenia\\TicketOrder\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.5",
+        "danielstjules/stringy": "^2.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.0|^4.0",
+        "friendsofphp/php-cs-fixer": "^1.11",
+        "mockery/mockery": "^0.9.4"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Convenia\\TicketOrder\\Tests\\": "tests/"
+        }
+    },
+    "config":{
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -29,7 +29,7 @@ class TicketOrder implements TicketOrderInterface
     protected $branch;
 
     /**
-     * Array of EmployeeRegisty
+     * Array of EmployeeRegisty.
      *
      * @var array
      */
@@ -41,11 +41,12 @@ class TicketOrder implements TicketOrderInterface
     protected $traillerRegistry;
 
     /**
-     * Product type
+     * Product type.
      *
      * TR01 - Paper
      * A - Eletronic card - Alimentação
      * R - Eletronic card - Refeição
+     *
      * @var string
      */
     protected $productType = null;
@@ -53,11 +54,12 @@ class TicketOrder implements TicketOrderInterface
     protected $validProductTypes = [
         'TR01',
         'A',
-        'R'
+        'R',
     ];
 
     /**
      * AleloOrder constructor.
+     *
      * @param array $headerData
      */
     public function __construct(array $headerData)
@@ -98,18 +100,21 @@ class TicketOrder implements TicketOrderInterface
 
     /**
      * @param $productType
-     * @return bool
+     *
      * @throws InvalidProductTypeException
+     *
+     * @return bool
      */
     public function setProductType($productType)
     {
-        if(in_array($productType, $this->validProductTypes)) {
+        if (in_array($productType, $this->validProductTypes)) {
             $this->productType = $productType;
+
             return true;
         }
 
         throw new InvalidProductTypeException(
-            '\''.$productType. '\' is invalid, valid products are '. implode(', ', $this->validProductTypes)
+            '\''.$productType.'\' is invalid, valid products are '.implode(', ', $this->validProductTypes)
         );
     }
 
@@ -118,7 +123,7 @@ class TicketOrder implements TicketOrderInterface
      */
     public function addEmployee(array $employeeData)
     {
-        $registryId = 2+count($this->getAllEmployees())+1;
+        $registryId = 2 + count($this->getAllEmployees()) + 1;
         $employeeData = array_merge(['registryId' => $registryId], $employeeData);
 
         $this->employees[] = new EmployeeRegistry($employeeData);
@@ -175,10 +180,11 @@ class TicketOrder implements TicketOrderInterface
         $this->traillerRegistry = new TraillerRegistry(
             [
                 'employeeRegTotals' => $this->employeesCount(),
-                'orderTotal' => $this->orderTotal(),
-                'registryId' => count($this->getAllEmployees())+3,
+                'orderTotal'        => $this->orderTotal(),
+                'registryId'        => count($this->getAllEmployees()) + 3,
             ]
         );
+
         return $this->traillerRegistry;
     }
 

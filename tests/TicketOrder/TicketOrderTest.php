@@ -1,6 +1,7 @@
 <?php
 
 namespace Convenia\TicketOrder\Tests;
+
 use Convenia\TicketOrder\TicketOrder;
 
 /**
@@ -13,8 +14,8 @@ class TicketOrderTest extends BaseTest
         $ticketOrder = new TicketOrder(
             [
                 'requesterUser' => 'TICKET',
-                'orderDate' => '20100120',
-                'orderTime' => '13.30.39',
+                'orderDate'     => '20100120',
+                'orderTime'     => '13.30.39',
             ]
         );
 

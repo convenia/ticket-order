@@ -21,25 +21,25 @@ class TraillerRegistry extends Registry
             'defaultValue' => 9,
         ],
         'employeeRegTotals' => [
-            'format'   => FieldN::class,
-            'position' => 2,
-            'length'   => 6,
+            'format'       => FieldN::class,
+            'position'     => 2,
+            'length'       => 6,
             'rules'        => [
-                'required'
+                'required',
             ],
         ],
         'orderTotal' => [
-            'format'   => FieldN::class,
-            'position' => 8,
-            'length'   => 15,
+            'format'       => FieldN::class,
+            'position'     => 8,
+            'length'       => 15,
             'rules'        => [
-                'required'
+                'required',
             ],
         ],
         'blankSpaces' => [
-            'format'   => FieldC::class,
-            'position' => 23,
-            'length'   => 372,
+            'format'       => FieldC::class,
+            'position'     => 23,
+            'length'       => 372,
             'defaultValue' => ' ',
         ],
         'registryId' => [
@@ -47,7 +47,7 @@ class TraillerRegistry extends Registry
             'position' => 395,
             'length'   => 6,
             'rules'    => [
-                'required'
+                'required',
             ],
         ],
     ];

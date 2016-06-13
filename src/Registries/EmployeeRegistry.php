@@ -2,8 +2,8 @@
 
 namespace Convenia\TicketOrder\Registries;
 
-use Convenia\TicketOrder\Fields\Formats\FieldN;
 use Convenia\TicketOrder\Fields\Formats\FieldC;
+use Convenia\TicketOrder\Fields\Formats\FieldN;
 
 /**
  * Class EmployeeRegistry.
@@ -46,10 +46,10 @@ class EmployeeRegistry extends Registry
             'format'       => FieldN::class,
             'position'     => 81,
             'length'       => 8,
-            'rules'    => [
+            'rules'        => [
                 'required',
                 'date:dmY',
-            ]
+            ],
         ],
         'cpf' => [
             'format'   => FieldN::class,
@@ -57,7 +57,7 @@ class EmployeeRegistry extends Registry
             'length'   => 11,
             'rules'    => [
                 'required',
-            ]
+            ],
         ],
         'identityType' => [
             'format'   => FieldC::class,
@@ -175,12 +175,12 @@ class EmployeeRegistry extends Registry
             'length'   => 8,
             'rules'    => [
                 'date:dmY',
-            ]
+            ],
         ],
         'reserved3' => [
-            'format'   => FieldC::class,
-            'position' => 348,
-            'length'   => 1,
+            'format'       => FieldC::class,
+            'position'     => 348,
+            'length'       => 1,
             'defaultValue' => '',
         ],
         'name' => [
@@ -189,12 +189,12 @@ class EmployeeRegistry extends Registry
             'length'   => 40,
             'rules'    => [
                 'required',
-            ]
+            ],
         ],
         'reserved4' => [
-            'format'   => FieldC::class,
-            'position' => 389,
-            'length'   => 6,
+            'format'       => FieldC::class,
+            'position'     => 389,
+            'length'       => 6,
             'defaultValue' => '',
         ],
         'registryId' => [
@@ -202,7 +202,7 @@ class EmployeeRegistry extends Registry
             'position' => 395,
             'length'   => 6,
             'rules'    => [
-                'required'
+                'required',
             ],
         ],
     ];

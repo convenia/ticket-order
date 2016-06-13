@@ -2,8 +2,8 @@
 
 namespace Convenia\TicketOrder\Registries;
 
-use Convenia\TicketOrder\Fields\Formats\FieldN;
 use Convenia\TicketOrder\Fields\Formats\FieldC;
+use Convenia\TicketOrder\Fields\Formats\FieldN;
 
 /**
  * Class BranchRegistry.
@@ -26,7 +26,7 @@ class BranchRegistry extends Registry
             'length'   => 8,
             'rules'    => [
                 'required',
-            ]
+            ],
         ],
         'cnpjBranch' => [
             'format'       => FieldN::class,
@@ -39,7 +39,7 @@ class BranchRegistry extends Registry
             'position' => 14,
             'length'   => 2,
             'rules'    => [
-                'required'
+                'required',
             ],
         ],
         'aleloCompanyCod' => [
@@ -47,7 +47,7 @@ class BranchRegistry extends Registry
             'position' => 16,
             'length'   => 10,
             'rules'    => [
-                'required'
+                'required',
             ],
         ],
         'name' => [
@@ -65,7 +65,7 @@ class BranchRegistry extends Registry
             'position' => 65,
             'length'   => 35,
             'rules'    => [
-                'required'
+                'required',
             ],
         ],
         'firstContactAddress' => [
@@ -124,17 +124,17 @@ class BranchRegistry extends Registry
             'length'   => 6,
         ],
         'branchCod' => [
-            'format'   => FieldC::class,
-            'position' => 344,
-            'length'   => 20,
+            'format'       => FieldC::class,
+            'position'     => 344,
+            'length'       => 20,
             'rules'        => [
-                'required'
+                'required',
             ],
         ],
         'blankSpaces' => [
-            'format'   => FieldC::class,
-            'position' => 364,
-            'length'   => 31,
+            'format'       => FieldC::class,
+            'position'     => 364,
+            'length'       => 31,
             'defaultValue' => '',
         ],
         'registryId' => [
@@ -142,7 +142,7 @@ class BranchRegistry extends Registry
             'position' => 395,
             'length'   => 6,
             'rules'    => [
-                'required'
+                'required',
             ],
         ],
     ];

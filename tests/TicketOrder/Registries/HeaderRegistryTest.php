@@ -17,7 +17,7 @@ class HeaderRegistryTest extends BaseTest
     {
         new HeaderRegistry(
             [
-                'invalid_field' => true
+                'invalid_field' => true,
             ]
         );
     }
@@ -27,8 +27,8 @@ class HeaderRegistryTest extends BaseTest
         $eletronicHeader = new HeaderRegistry(
             [
                 'requesterUser' => 'TICKET',
-                'orderDate' => '20100120',
-                'orderTime' => '13.30.39',
+                'orderDate'     => '20100120',
+                'orderTime'     => '13.30.39',
             ]
         );
 

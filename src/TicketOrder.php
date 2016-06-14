@@ -97,7 +97,7 @@ class TicketOrder implements TicketOrderInterface
     {
         $defaultValues = [
             'product'    => $this->productType,
-            'product_2'  => $this->productType,
+            'product2'  => $this->productType,
             'cardType'   => $this->cardTypes[$this->productType],
             'registryId' => 1,
         ];

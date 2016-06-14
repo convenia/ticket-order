@@ -42,7 +42,7 @@ class HeaderEletronicRegistry extends Registry
             'length'       => 1,
             'defaultValue' => '0',
         ],
-        'product_2' => [
+        'product2' => [
             'format'   => FieldC::class,
             'position' => 6,
             'length'   => 1,

@@ -96,9 +96,9 @@ class TicketOrder implements TicketOrderInterface
     public function orderSetup(array $orderData)
     {
         $defaultValues = [
-            'product' => $this->productType,
-            'product_2' => $this->productType,
-            'cardType' => $this->cardTypes[$this->productType],
+            'product'    => $this->productType,
+            'product_2'  => $this->productType,
+            'cardType'   => $this->cardTypes[$this->productType],
             'registryId' => 1,
         ];
 
@@ -112,17 +112,16 @@ class TicketOrder implements TicketOrderInterface
     public function deliverySetup(array $deliveryData)
     {
         if (!isset($deliveryData['areaCode'])) {
-
         }
 
-        $areaCodeBase = substr($deliveryData['areaCode'],0,5);
-        $areaCode = substr($deliveryData['areaCode'],5,3);
+        $areaCodeBase = substr($deliveryData['areaCode'], 0, 5);
+        $areaCode = substr($deliveryData['areaCode'], 5, 3);
 
         $defaulValues = [
-            'product' => $this->productType,
+            'product'      => $this->productType,
             'areaCodeBase' => $areaCodeBase,
-            'areaCode' => $areaCode,
-            'registryId' => 2,
+            'areaCode'     => $areaCode,
+            'registryId'   => 2,
         ];
 
         $deliveryData = array_merge($deliveryData, $defaulValues);
@@ -182,8 +181,8 @@ class TicketOrder implements TicketOrderInterface
         $registryId = 2 + count($this->getAllEmployees()) + 1;
 
         $defaultValue = [
-            'product' => $this->productType,
-            'product2' => $this->productType,
+            'product'    => $this->productType,
+            'product2'   => $this->productType,
             'registryId' => $registryId,
         ];
 
@@ -223,8 +222,8 @@ class TicketOrder implements TicketOrderInterface
 
         $this->header = new HeaderRegistry([
             'requesterUser' => $this->orderUser,
-            'orderDate' => (new Carbon())->format('Ymd'),
-            'orderTime' => (new Carbon())->format('H.i.s'),
+            'orderDate'     => (new Carbon())->format('Ymd'),
+            'orderTime'     => (new Carbon())->format('H.i.s'),
         ]);
 
         $this->generateTraillerRegistry();
@@ -253,10 +252,10 @@ class TicketOrder implements TicketOrderInterface
     {
         $this->traillerRegistry = new TraillerRegistry(
             [
-                'product' => $this->productType,
+                'product'           => $this->productType,
                 'employeeRegTotals' => $this->employeesCount(),
-                'orderTotal' => $this->orderTotal(),
-                'registryId' => count($this->getAllEmployees()) + 3,
+                'orderTotal'        => $this->orderTotal(),
+                'registryId'        => count($this->getAllEmployees()) + 3,
             ]
         );
 

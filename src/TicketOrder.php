@@ -2,10 +2,14 @@
 
 namespace Convenia\TicketOrder;
 
+use Carbon\Carbon;
 use Convenia\TicketOrder\Exceptions\InvalidProductTypeException;
 use Convenia\TicketOrder\Exceptions\ProductTypeIsRequiredException;
 use Convenia\TicketOrder\Interfaces\TicketOrderInterface;
+use Convenia\TicketOrder\Registries\EmployeeRegistry;
+use Convenia\TicketOrder\Registries\HeaderEletronicRegistry;
 use Convenia\TicketOrder\Registries\HeaderRegistry;
+use Convenia\TicketOrder\Registries\TraillerRegistry;
 use Stringy\Stringy;
 
 /**
@@ -13,6 +17,11 @@ use Stringy\Stringy;
  */
 class TicketOrder implements TicketOrderInterface
 {
+    /**
+     * @var string
+     */
+    protected $orderUser = 'TicketOrder';
+
     /**
      * @var Stringy
      */
@@ -22,6 +31,11 @@ class TicketOrder implements TicketOrderInterface
      * @var HeaderRegistry
      */
     public $header;
+
+    /**
+     * @var HeaderEletronicRegistry
+     */
+    public $headerEletronic;
 
     /**
      * @var BranchRegistry
@@ -43,29 +57,56 @@ class TicketOrder implements TicketOrderInterface
     /**
      * Product type.
      *
-     * TR01 - Paper
-     * A - Eletronic card - Alimentação
-     * R - Eletronic card - Refeição
+     * TAE - Eletronic card - Alimentação
+     * TRE - Eletronic card - Refeição
      *
      * @var string
      */
     protected $productType = null;
 
+    /**
+     * @var array
+     */
     protected $validProductTypes = [
-        'TR01',
-        'A',
-        'R',
+        'TAE' => 'A',
+        'TRE' => 'R',
+    ];
+
+    protected $cardTypes = [
+        'TAE' => '33',
+        'TRE' => '34',
     ];
 
     /**
-     * AleloOrder constructor.
+     * TicketOrder constructor.
      *
-     * @param array $headerData
      */
-    public function __construct(array $headerData)
+    public function __construct()
     {
-        $this->header = new HeaderRegistry($headerData);
         $this->fileLayout = Stringy::create('');
+    }
+
+    /**
+     * Setup the order
+     *
+     * @param array $orderData
+     *
+     * @return $this
+     */
+    public function orderSetup(array $orderData)
+    {
+        $defaultValues = [
+            'product'        => $this->productType,
+            'product_2'      => $this->productType,
+            'cardType'       => $this->cardTypes[$this->productType],
+            'registryId'     => 1
+        ];
+
+        $defaultValues = array_merge($defaultValues, $orderData);
+
+        $this->headerEletronic = new HeaderEletronicRegistry($defaultValues);
+
+        return $this;
     }
 
     /**
@@ -73,7 +114,7 @@ class TicketOrder implements TicketOrderInterface
      */
     public function typeRefeicao()
     {
-        $this->setProductType('R');
+        $this->setProductType('TRE');
 
         return $this;
     }
@@ -83,17 +124,7 @@ class TicketOrder implements TicketOrderInterface
      */
     public function typeAlimentacao()
     {
-        $this->setProductType('A');
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function typeRefeicaoPapel()
-    {
-        $this->setProductType('TR01');
+        $this->setProductType('TAE');
 
         return $this;
     }
@@ -107,7 +138,7 @@ class TicketOrder implements TicketOrderInterface
      */
     public function setProductType($productType)
     {
-        if (in_array($productType, $this->validProductTypes)) {
+        if (in_array($productType, array_keys($this->validProductTypes))) {
             $this->productType = $productType;
 
             return true;
@@ -120,13 +151,24 @@ class TicketOrder implements TicketOrderInterface
 
     /**
      * @param array $employeeData
+     *
+     * @return $this
      */
     public function addEmployee(array $employeeData)
     {
         $registryId = 2 + count($this->getAllEmployees()) + 1;
-        $employeeData = array_merge(['registryId' => $registryId], $employeeData);
+
+        $defaultValue = [
+            'product' => $this->productType,
+            'product2' => $this->productType,
+            'registryId' => $registryId,
+        ];
+
+        $employeeData = array_merge($defaultValue, $employeeData);
 
         $this->employees[] = new EmployeeRegistry($employeeData);
+
+        return $this;
     }
 
     /**
@@ -156,11 +198,21 @@ class TicketOrder implements TicketOrderInterface
             throw new ProductTypeIsRequiredException();
         }
 
+        $this->header = new HeaderRegistry([
+            'requesterUser' => $this->orderUser,
+            'orderDate'     => (new Carbon())->format('Ymd'),
+            'orderTime'     => (new Carbon())->format('H.i.s'),
+        ]);
+
+
         $this->generateTraillerRegistry();
+
         $this->fileLayout = $this->fileLayout->append($this->header->__toString());
         $this->fileLayout = $this->fileLayout->append(PHP_EOL);
-        $this->fileLayout = $this->fileLayout->append($this->branch->__toString());
+        $this->fileLayout = $this->fileLayout->append($this->headerEletronic->__toString());
         $this->fileLayout = $this->fileLayout->append(PHP_EOL);
+//        $this->fileLayout = $this->fileLayout->append($this->branch->__toString());
+//        $this->fileLayout = $this->fileLayout->append(PHP_EOL);
 
         foreach ($this->getAllEmployees() as $employeeRegistry) {
             $this->fileLayout = $this->fileLayout->append($employeeRegistry->__toString());
@@ -169,7 +221,7 @@ class TicketOrder implements TicketOrderInterface
 
         $this->fileLayout = $this->fileLayout->append($this->traillerRegistry->__toString());
 
-        return (string) $this->fileLayout;
+        return $this->fileLayout->__toString();
     }
 
     /**
@@ -179,9 +231,10 @@ class TicketOrder implements TicketOrderInterface
     {
         $this->traillerRegistry = new TraillerRegistry(
             [
+                'product' => $this->productType,
                 'employeeRegTotals' => $this->employeesCount(),
-                'orderTotal'        => $this->orderTotal(),
-                'registryId'        => count($this->getAllEmployees()) + 3,
+                'orderTotal' => $this->orderTotal(),
+                'registryId' => count($this->getAllEmployees()) + 3,
             ]
         );
 

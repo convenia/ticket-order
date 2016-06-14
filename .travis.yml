@@ -19,6 +19,9 @@ before_script:
     - travis_retry composer global require hirak/prestissimo
     - travis_retry composer install --prefer-dist --no-interaction
 
+after_script:
+    - php vendor/bin/codacycoverage clover build/logs/clover.xml
+
 notifications:
     script:
         - "phpunit --process-isolation"

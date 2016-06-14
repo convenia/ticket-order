@@ -33,13 +33,25 @@ class TicketOrderTest extends BaseTest
                         'creditDate' => '20100130',
                         'creditMonth' => '1',
                     ])
+                    ->deliverySetup([
+                        'companyName' => 'Ticket LTDA.',
+                        'addressType' => 'AL',
+                        'address' => 'Rua Teste',
+                        'addressNumber' => '1',
+                        'address2' => 'AP 10',
+                        'city' => 'São Paulo',
+                        'district' => 'Ipiranga',
+                        'state' => 'SP',
+                        'areaCode' => '00000000',
+                        'contactPerson' => 'Fulano',
+                    ])
                     ->addEmployee([
                         'department' => 'opa',
-                        'cpf' => '33402203871',
-                        'birthDate' => '08011985',
-                        'branchName' => 'opa',
+                        'cpf' => '55602308547',
+                        'birthDate' => '08011972',
+                        'branchName' => 'Ticket LTDA.',
                         'monthValue' => '10000',
-                        'name' => 'Eduardo',
+                        'name' => 'Ciclano',
                     ])
                     ->generate();
     }

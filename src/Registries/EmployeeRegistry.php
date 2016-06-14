@@ -10,7 +10,7 @@ use Convenia\TicketOrder\Fields\Formats\FieldN;
  */
 class EmployeeRegistry extends Registry
 {
-    protected $length = 163;
+    protected $length = 164;
 
     /**
      * @var array
@@ -103,6 +103,12 @@ class EmployeeRegistry extends Registry
                 'required',
             ],
         ],
+        'private3' => [
+            'format' => FieldN::class,
+            'position' => 111,
+            'length' => 1,
+            'defaultValue' => 'E',
+        ],
         'name' => [
             'format' => FieldC::class,
             'position' => 112,
@@ -111,7 +117,7 @@ class EmployeeRegistry extends Registry
                 'required',
             ],
         ],
-        'private3' => [
+        'private4' => [
             'format' => FieldN::class,
             'position' => 142,
             'length' => 17,

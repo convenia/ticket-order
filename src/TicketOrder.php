@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Convenia\TicketOrder\Exceptions\InvalidProductTypeException;
 use Convenia\TicketOrder\Exceptions\ProductTypeIsRequiredException;
 use Convenia\TicketOrder\Interfaces\TicketOrderInterface;
+use Convenia\TicketOrder\Registries\BranchRegistry;
 use Convenia\TicketOrder\Registries\EmployeeRegistry;
 use Convenia\TicketOrder\Registries\HeaderEletronicRegistry;
 use Convenia\TicketOrder\Registries\HeaderRegistry;
@@ -104,6 +105,29 @@ class TicketOrder implements TicketOrderInterface
         $defaultValues = array_merge($defaultValues, $orderData);
 
         $this->headerEletronic = new HeaderEletronicRegistry($defaultValues);
+
+        return $this;
+    }
+
+    public function deliverySetup(array $deliveryData)
+    {
+        if (!isset($deliveryData['areaCode'])) {
+
+        }
+
+        $areaCodeBase = substr($deliveryData['areaCode'],0,5);
+        $areaCode = substr($deliveryData['areaCode'],5,3);
+
+        $defaulValues = [
+            'product' => $this->productType,
+            'areaCodeBase' => $areaCodeBase,
+            'areaCode' => $areaCode,
+            'registryId' => 2,
+        ];
+
+        $deliveryData = array_merge($deliveryData, $defaulValues);
+
+        $this->branch = new BranchRegistry($deliveryData);
 
         return $this;
     }
@@ -209,8 +233,8 @@ class TicketOrder implements TicketOrderInterface
         $this->fileLayout = $this->fileLayout->append(PHP_EOL);
         $this->fileLayout = $this->fileLayout->append($this->headerEletronic->__toString());
         $this->fileLayout = $this->fileLayout->append(PHP_EOL);
-//        $this->fileLayout = $this->fileLayout->append($this->branch->__toString());
-//        $this->fileLayout = $this->fileLayout->append(PHP_EOL);
+        $this->fileLayout = $this->fileLayout->append($this->branch->__toString());
+        $this->fileLayout = $this->fileLayout->append(PHP_EOL);
 
         foreach ($this->getAllEmployees() as $employeeRegistry) {
             $this->fileLayout = $this->fileLayout->append($employeeRegistry->__toString());

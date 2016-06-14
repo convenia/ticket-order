@@ -79,7 +79,6 @@ class TicketOrder implements TicketOrderInterface
 
     /**
      * TicketOrder constructor.
-     *
      */
     public function __construct()
     {
@@ -87,7 +86,7 @@ class TicketOrder implements TicketOrderInterface
     }
 
     /**
-     * Setup the order
+     * Setup the order.
      *
      * @param array $orderData
      *
@@ -96,10 +95,10 @@ class TicketOrder implements TicketOrderInterface
     public function orderSetup(array $orderData)
     {
         $defaultValues = [
-            'product'        => $this->productType,
-            'product_2'      => $this->productType,
-            'cardType'       => $this->cardTypes[$this->productType],
-            'registryId'     => 1
+            'product' => $this->productType,
+            'product_2' => $this->productType,
+            'cardType' => $this->cardTypes[$this->productType],
+            'registryId' => 1,
         ];
 
         $defaultValues = array_merge($defaultValues, $orderData);
@@ -200,10 +199,9 @@ class TicketOrder implements TicketOrderInterface
 
         $this->header = new HeaderRegistry([
             'requesterUser' => $this->orderUser,
-            'orderDate'     => (new Carbon())->format('Ymd'),
-            'orderTime'     => (new Carbon())->format('H.i.s'),
+            'orderDate' => (new Carbon())->format('Ymd'),
+            'orderTime' => (new Carbon())->format('H.i.s'),
         ]);
-
 
         $this->generateTraillerRegistry();
 

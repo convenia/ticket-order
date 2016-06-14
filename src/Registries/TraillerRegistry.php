@@ -10,7 +10,6 @@ use Convenia\TicketOrder\Fields\Formats\FieldN;
  */
 class TraillerRegistry extends Registry
 {
-
     protected $length = 164;
 
     /**

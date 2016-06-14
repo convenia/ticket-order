@@ -64,7 +64,7 @@ class EmployeeRegistry extends Registry
             'length' => 8,
             'rules' => [
                 'required',
-                'date:dmY'
+                'date:dmY',
             ],
         ],
         'private1' => [

@@ -26,15 +26,15 @@ class HeaderEletronicRegistryTest extends BaseTest
     {
         $eletronicHeader = new HeaderEletronicRegistry(
             [
-                'product'        => 'A',
-                'product_2'      => 'A',
+                'product' => 'A',
+                'product_2' => 'A',
                 'contractNumber' => '1234567890',
-                'companyName'    => 'NOME DE SUA EMPRESA',
-                'orderDate'      => '20100120',
-                'creditDate'     => '20100130',
-                'creditMonth'    => '1',
-                'cardType'       => '33',
-                'registryId'     => '1', // For tests only
+                'companyName' => 'NOME DE SUA EMPRESA',
+                'orderDate' => '20100120',
+                'creditDate' => '20100130',
+                'creditMonth' => '1',
+                'cardType' => '33',
+                'registryId' => '1', // For tests only
             ]
         );
 
@@ -47,15 +47,15 @@ class HeaderEletronicRegistryTest extends BaseTest
     {
         $eletronicHeader = new HeaderEletronicRegistry(
             [
-                'product'        => 'R',
-                'product_2'      => 'R',
+                'product' => 'R',
+                'product_2' => 'R',
                 'contractNumber' => '1234567890',
-                'companyName'    => 'NOME DE SUA EMPRESA',
-                'orderDate'      => '20100120',
-                'creditDate'     => '20100130',
-                'creditMonth'    => '1',
-                'cardType'       => '33',
-                'registryId'     => '1', // For tests only
+                'companyName' => 'NOME DE SUA EMPRESA',
+                'orderDate' => '20100120',
+                'creditDate' => '20100130',
+                'creditMonth' => '1',
+                'cardType' => '33',
+                'registryId' => '1', // For tests only
             ]
         );
 

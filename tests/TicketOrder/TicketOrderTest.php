@@ -2,7 +2,6 @@
 
 namespace Convenia\TicketOrder\Tests;
 
-use Convenia\TicketOrder\Exceptions\InvalidProductTypeException;
 use Convenia\TicketOrder\TicketOrder;
 
 /**
@@ -10,10 +9,13 @@ use Convenia\TicketOrder\TicketOrder;
  */
 class TicketOrderTest extends BaseTest
 {
+    /**
+     * @expectedException \Convenia\TicketOrder\Exceptions\InvalidProductTypeException
+     *
+     * @throws InvalidProductTypeException
+     */
     public function test_wrong_product_type()
     {
-        $this->expectException(InvalidProductTypeException::class);
-
         $ticketOrder = new TicketOrder();
 
         $ticketOrder->setProductType('wrong');
@@ -26,10 +28,10 @@ class TicketOrderTest extends BaseTest
         $ticketOrder->typeAlimentacao()
                     ->orderSetup([
                         'contractNumber' => '1234567890',
-                        'companyName'    => 'NOME DE SUA EMPRESA',
-                        'orderDate'      => '20100120',
-                        'creditDate'     => '20100130',
-                        'creditMonth'    => '1',
+                        'companyName' => 'NOME DE SUA EMPRESA',
+                        'orderDate' => '20100120',
+                        'creditDate' => '20100130',
+                        'creditMonth' => '1',
                     ])
                     ->addEmployee([
                         'department' => 'opa',

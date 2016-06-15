@@ -118,7 +118,7 @@ class EmployeeRegistry extends Registry
             ],
         ],
         'private4' => [
-            'format' => FieldN::class,
+            'format' => FieldC::class,
             'position' => 142,
             'length' => 17,
             'defaultValue' => ' ',

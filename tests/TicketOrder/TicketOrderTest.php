@@ -47,7 +47,7 @@ class TicketOrderTest extends BaseTest
                     ])
                     ->addEmployee([
                         'department' => 'opa',
-                        'cpf'        => '55602308547',
+                        'cpf'        => '356.765.698-83',
                         'birthDate'  => '08011972',
                         'branchName' => 'Ticket LTDA.',
                         'monthValue' => '10000',

@@ -156,14 +156,14 @@ class TicketOrder implements TicketOrderInterface
      *
      * @throws InvalidProductTypeException
      *
-     * @return bool
+     * @return $this
      */
     public function setProductType($productType)
     {
         if (in_array($productType, array_keys($this->validProductTypes))) {
             $this->productType = $productType;
 
-            return true;
+            return $this;
         }
 
         throw new InvalidProductTypeException(

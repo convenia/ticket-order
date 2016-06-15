@@ -16,7 +16,6 @@ class FieldN extends Field
      */
     public function format()
     {
-
         $this->value = $this->value->replace('R$', '');
         $this->value = $this->value->replace(',', '');
         $this->value = $this->value->replace('.', '');

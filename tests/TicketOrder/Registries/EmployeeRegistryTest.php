@@ -18,11 +18,11 @@ class EmployeeRegistryTest extends BaseTest
                 'product2' => 'R',
                 'registryId' => 3,
                 'department' => 'ADM',
-                'cpf'        => '207.792.083-15',
-                'birthDate'  => '07061962',
+                'cpf' => '207.792.083-15',
+                'birthDate' => '07061962',
                 'branchName' => 'MATRIZ',
                 'monthValue' => 23000,
-                'name'       => 'GESIEL DE SOUSA RIBEIRO',
+                'name' => 'GESIEL DE SOUSA RIBEIRO',
             ]
         );
 
@@ -39,16 +39,16 @@ class EmployeeRegistryTest extends BaseTest
                 'product2' => 'R',
                 'registryId' => 3,
                 'department' => 'ADM',
-                'cpf'        => '020779208315',
-                'birthDate'  => '07061962',
+                'cpf' => '020779208315',
+                'birthDate' => '07061962',
                 'branchName' => 'MATRIZ',
                 'monthValue' => 23000,
-                'name'       => 'GESIEL DE SOUSA RIBEIRO',
+                'name' => 'GESIEL DE SOUSA RIBEIRO',
             ]
         );
 
         $expected = 'TR023ADM                       02077920831507061962                  MATRIZ                    00101000023000REGESIEL DE SOUSA RIBEIRO                        000003';
 
-        $this->assertEquals($expected, (string)$header);
+        $this->assertEquals($expected, (string) $header);
     }
 }

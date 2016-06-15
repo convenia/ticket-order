@@ -28,30 +28,30 @@ class TicketOrderTest extends BaseTest
         $ticketOrder->typeAlimentacao()
                     ->orderSetup([
                         'contractNumber' => '1234567890',
-                        'companyName'    => 'NOME DE SUA EMPRESA',
-                        'orderDate'      => '20100120',
-                        'creditDate'     => '20100130',
-                        'creditMonth'    => '1',
+                        'companyName' => 'NOME DE SUA EMPRESA',
+                        'orderDate' => '20100120',
+                        'creditDate' => '20100130',
+                        'creditMonth' => '1',
                     ])
                     ->deliverySetup([
-                        'companyName'   => 'Ticket LTDA.',
-                        'addressType'   => 'AL',
-                        'address'       => 'Rua Teste',
+                        'companyName' => 'Ticket LTDA.',
+                        'addressType' => 'AL',
+                        'address' => 'Rua Teste',
                         'addressNumber' => '1',
-                        'address2'      => 'AP 10',
-                        'city'          => 'São Paulo',
-                        'district'      => 'Ipiranga',
-                        'state'         => 'SP',
-                        'areaCode'      => '00000000',
+                        'address2' => 'AP 10',
+                        'city' => 'São Paulo',
+                        'district' => 'Ipiranga',
+                        'state' => 'SP',
+                        'areaCode' => '00000000',
                         'contactPerson' => 'Fulano',
                     ])
                     ->addEmployee([
                         'department' => 'opa',
-                        'cpf'        => '55602308547',
-                        'birthDate'  => '08011972',
+                        'cpf' => '356.765.698-83',
+                        'birthDate' => '08011972',
                         'branchName' => 'Ticket LTDA.',
                         'monthValue' => '10000',
-                        'name'       => 'Ciclano',
+                        'name' => 'Ciclano',
                     ])
                     ->generate();
     }

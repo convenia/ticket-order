@@ -14,15 +14,15 @@ class EmployeeRegistryTest extends BaseTest
     {
         $employee = new EmployeeRegistry(
             [
-                'product' => 'R',
-                'product2' => 'R',
+                'product'    => 'R',
+                'product2'   => 'R',
                 'registryId' => 3,
                 'department' => 'ADM',
-                'cpf' => '207.792.083-15',
-                'birthDate' => '07061962',
+                'cpf'        => '207.792.083-15',
+                'birthDate'  => '07061962',
                 'branchName' => 'MATRIZ',
                 'monthValue' => 23000,
-                'name' => 'GESIEL DE SOUSA RIBEIRO',
+                'name'       => 'GESIEL DE SOUSA RIBEIRO',
             ]
         );
 
@@ -35,15 +35,15 @@ class EmployeeRegistryTest extends BaseTest
     {
         $header = new EmployeeRegistry(
             [
-                'product' => 'R',
-                'product2' => 'R',
+                'product'    => 'R',
+                'product2'   => 'R',
                 'registryId' => 3,
                 'department' => 'ADM',
-                'cpf' => '020779208315',
-                'birthDate' => '07061962',
+                'cpf'        => '020779208315',
+                'birthDate'  => '07061962',
                 'branchName' => 'MATRIZ',
                 'monthValue' => 23000,
-                'name' => 'GESIEL DE SOUSA RIBEIRO',
+                'name'       => 'GESIEL DE SOUSA RIBEIRO',
             ]
         );
 

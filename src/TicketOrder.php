@@ -3,6 +3,7 @@
 namespace Convenia\TicketOrder;
 
 use Carbon\Carbon;
+use Convenia\TicketOrder\Exceptions\AreaCodeRequiredException;
 use Convenia\TicketOrder\Exceptions\InvalidProductTypeException;
 use Convenia\TicketOrder\Exceptions\ProductTypeIsRequiredException;
 use Convenia\TicketOrder\Interfaces\TicketOrderInterface;
@@ -109,10 +110,20 @@ class TicketOrder implements TicketOrderInterface
         return $this;
     }
 
+    /**
+     * @param array $deliveryData
+     * 
+     * @return $this
+     *
+     * @throws AreaCodeRequiredException
+     */
     public function deliverySetup(array $deliveryData)
     {
         if (!isset($deliveryData['areaCode'])) {
+            throw new AreaCodeRequiredException();
         }
+
+        $deliveryData['areaCode'] = str_replace('-', '', $deliveryData['areaCode']);
 
         $areaCodeBase = substr($deliveryData['areaCode'], 0, 5);
         $areaCode = substr($deliveryData['areaCode'], 5, 3);

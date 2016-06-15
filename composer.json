@@ -31,7 +31,8 @@
         "phpunit/phpunit": "^5.0|^4.0",
         "friendsofphp/php-cs-fixer": "^1.11",
         "mockery/mockery": "^0.9.4",
-        "codacy/coverage": "dev-master"
+        "codacy/coverage": "dev-master",
+        "sllh/php-cs-fixer-styleci-bridge":"^2.1"
     },
     "autoload-dev": {
         "psr-4": {

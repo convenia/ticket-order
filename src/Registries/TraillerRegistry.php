@@ -17,58 +17,58 @@ class TraillerRegistry extends Registry
      */
     protected $defaultFields = [
         'registryType' => [
-            'format'       => FieldN::class,
-            'position'     => 1,
-            'length'       => 1,
+            'format' => FieldN::class,
+            'position' => 1,
+            'length' => 1,
             'defaultValue' => 'T',
         ],
         'product' => [
-            'format'   => FieldC::class,
+            'format' => FieldC::class,
             'position' => 2,
-            'length'   => 1,
-            'rules'    => [
+            'length' => 1,
+            'rules' => [
                 'required',
             ],
         ],
         'fixed' => [
-            'format'       => FieldC::class,
-            'position'     => 3,
-            'length'       => 2,
+            'format' => FieldC::class,
+            'position' => 3,
+            'length' => 2,
             'defaultValue' => '02',
         ],
         'type' => [
-            'format'       => FieldC::class,
-            'position'     => 5,
-            'length'       => 1,
+            'format' => FieldC::class,
+            'position' => 5,
+            'length' => 1,
             'defaultValue' => '9',
         ],
         'employeeRegTotals' => [
-            'format'   => FieldN::class,
+            'format' => FieldN::class,
             'position' => 6,
-            'length'   => 8,
-            'rules'    => [
+            'length' => 8,
+            'rules' => [
                 'required',
             ],
         ],
         'orderTotal' => [
-            'format'   => FieldN::class,
+            'format' => FieldN::class,
             'position' => 14,
-            'length'   => 14,
-            'rules'    => [
+            'length' => 14,
+            'rules' => [
                 'required',
             ],
         ],
         'private1' => [
-            'format'       => FieldC::class,
-            'position'     => 28,
-            'length'       => 131,
+            'format' => FieldC::class,
+            'position' => 28,
+            'length' => 131,
             'defaultValue' => ' ',
         ],
         'registryId' => [
-            'format'   => FieldN::class,
+            'format' => FieldN::class,
             'position' => 395,
-            'length'   => 6,
-            'rules'    => [
+            'length' => 6,
+            'rules' => [
                 'required',
             ],
         ],

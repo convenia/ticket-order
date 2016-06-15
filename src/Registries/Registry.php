@@ -129,7 +129,7 @@ abstract class Registry implements RegistryInterface
         }
 
         if ($resultLength < $this->length) {
-            throw new RegistryTooShortException($resultLength);
+            throw new RegistryTooShortException(__CLASS__.' '.$resultLength);
         }
 
         return true;
